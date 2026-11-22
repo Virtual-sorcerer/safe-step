@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Safe Step by GRIPMAX DIY – Phủ nhám chống trơn cho sàn gạch</title>
+<script>document.documentElement.classList.add('js')</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F6F5F0;--card:#FAFAF8;--ink:#1d2620;--mute:#5f665f;--g:#233D29;--o:#D95D39;--ln:#D8D6CE;--on-g:#F6F5F0;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121612;--card:#181d18;--ink:#e8e8e0;--mute:#9aa29a;--g:#8fbf98;--ln:#2d352d;--on-g:#121612;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#121612;--card:#181d18;--ink:#e8e8e0;--mute:#9aa29a;--g:#8fbf98;--ln:#2d352d;--on-g:#121612;color-scheme:dark}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:calc(72px + env(safe-area-inset-top,0px))}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "Space Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+.mono{font-family:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace}
+a{color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--ln)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:30}
+.nav{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.nav nav{display:flex;gap:28px;font-size:14px}
+.nav nav a{text-decoration:none;color:var(--mute)}.nav nav a:hover{color:var(--g)}
+.logo{display:block;height:34px;width:auto;color:var(--g)}
+.btn{display:inline-block;background:var(--o);color:#fff;border:0;padding:12px 22px;font:700 15px "Space Grotesk",sans-serif;text-decoration:none;cursor:pointer;border-radius:2px;transition:transform .15s,background .15s}
+.btn:hover{background:#bf4d2d}.btn:active{transform:translateY(1px)}
+.btn.sm{padding:9px 16px;font-size:14px}
+.btn.ghost{background:none;color:var(--g);border:1px solid var(--g)}.btn.ghost:hover{background:var(--g);color:var(--on-g)}
+:focus-visible{outline:2px solid var(--o);outline-offset:2px}
+h1,h2,h3{font-weight:700;letter-spacing:-.03em;line-height:1.05;margin:0;color:var(--g)}
+h1{font-size:clamp(36px,5.4vw,66px)}
+h2{font-size:clamp(28px,3.6vw,44px);max-width:20ch}
+.hero{display:grid;grid-template-columns:1fr 1.1fr;gap:40px;padding:56px 0 64px;align-items:center}
+.hero p.lead{font-size:18px;color:var(--mute);max-width:46ch;margin:22px 0 28px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.sim{border:1px solid var(--ln);background:var(--card)}
+.sim canvas{display:block;width:100%;height:340px;cursor:ew-resize;touch-action:pan-y}
+.sim .bar{display:flex;justify-content:space-between;gap:12px;padding:12px 14px;border-top:1px solid var(--ln);font-size:12px;color:var(--mute);flex-wrap:wrap}
+.sim .bar b{color:var(--ink);font-weight:500}
+.sim .ctl{display:flex;align-items:center;gap:10px;padding:10px 14px;border-top:1px solid var(--ln);font-size:12px;color:var(--mute)}
+.sim input[type=range]{flex:1;accent-color:var(--o)}
+.state{font-weight:500}.state.slip{color:var(--o)}.state.grip{color:var(--g)}
+section{padding:72px 0;position:relative;border-top:1px solid var(--ln)}
+.sh{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:36px;flex-wrap:wrap}
+.sh p{margin:0;max-width:44ch;color:var(--mute)}
+.bento{display:grid;grid-template-columns:repeat(6,1fr);border-top:1px solid var(--ln);border-left:1px solid var(--ln)}
+.cell{position:relative;padding:26px;border-right:1px solid var(--ln);border-bottom:1px solid var(--ln);background:var(--card);overflow:hidden;min-height:210px;grid-column:span 2}
+.cell.w3{grid-column:span 3}.cell.w4{grid-column:span 4}
+.cell::before{content:"";position:absolute;inset:0;opacity:0;transition:opacity .4s;pointer-events:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/><feColorMatrix values='0 0 0 0 .14 0 0 0 0 .24 0 0 0 0 .16 0 0 0 .55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");mix-blend-mode:multiply}
+.cell:hover::before{opacity:.5}
+.cell>*{position:relative}
+.cell .k{font-size:12px;color:var(--mute)}
+.cell .v{font-size:clamp(34px,4vw,52px);font-weight:700;letter-spacing:-.03em;color:var(--g);margin:10px 0 8px;line-height:1}
+.cell .v small{font-size:.4em;font-weight:500;margin-left:4px;color:var(--mute)}
+.cell p{margin:0;color:var(--mute);font-size:15px;max-width:40ch}
+.sect{display:block;width:100%;max-width:300px;margin-top:14px}
+.note{font-size:12px;color:var(--mute);margin-top:14px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+.step{padding-right:28px}
+.ln{height:2px;background:linear-gradient(var(--g),var(--g)) left/calc(var(--s,0)*100%) 100% no-repeat,var(--ln);margin-bottom:22px;position:relative}
+.ln::after{content:"";position:absolute;left:calc(var(--s,0)*100% - 5px);top:-4px;width:10px;height:10px;background:var(--o);border-radius:50%;opacity:calc(var(--s,0)*10)}
+
+.step .n{font-size:13px;color:var(--o);font-weight:500}
+.step h3{font-size:26px;margin:6px 0 10px}
+.step p{margin:0;color:var(--mute);max-width:36ch}
+.step .t{margin-top:14px;font-size:12px;color:var(--ink);border:1px solid var(--ln);display:inline-block;padding:4px 10px}
+.posts{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.post{border:1px solid var(--ln);background:var(--card);padding:20px;display:flex;flex-direction:column;gap:12px}
+.post .who{display:flex;gap:10px;align-items:center;font-size:14px}
+.av{width:34px;height:34px;border-radius:50%;background:var(--g);color:var(--on-g);display:grid;place-items:center;font-weight:700;font-size:13px}
+.post .meta{font-size:12px;color:var(--mute)}
+.post p{margin:0}
+.cm{border-top:1px solid var(--ln);padding-top:10px;font-size:14px;color:var(--mute)}
+.cm b{color:var(--ink);font-weight:500}
+.like{align-self:flex-start;background:none;border:1px solid var(--ln);padding:5px 12px;font:12px "JetBrains Mono",monospace;color:var(--ink);cursor:pointer}
+.like[aria-pressed=true]{border-color:var(--o);color:var(--o)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:56px}
+details{border-bottom:1px solid var(--ln);padding:14px 0}
+summary{cursor:pointer;font-weight:500;list-style:none;display:flex;justify-content:space-between;gap:12px}
+summary::after{content:"+";font-family:"JetBrains Mono",monospace;color:var(--o)}
+details[open] summary::after{content:"–"}
+details p{color:var(--mute);margin:10px 0 0;max-width:52ch}
+form{border:1px solid var(--g);padding:26px;background:var(--card);display:grid;gap:14px}
+label{font-size:13px;color:var(--mute);display:grid;gap:6px}
+input,select{font:16px "Space Grotesk",sans-serif;padding:11px 12px;border:1px solid var(--ln);background:var(--bg);color:var(--ink);border-radius:2px;width:100%}
+.ok{display:none;color:var(--g);font-weight:500}
+footer{border-top:1px solid var(--ln);padding:32px 0 40px;font-size:13px;color:var(--mute)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+@media (max-width:900px){
+.hero{grid-template-columns:1fr;padding-top:36px}.nav nav{display:none}
+.cell,.cell.w3,.cell.w4{grid-column:span 6}
+.steps{grid-template-columns:1fr;gap:34px}.step{padding-right:0}
+.posts{grid-template-columns:1fr}.split{grid-template-columns:1fr;gap:36px}
+.sim canvas{height:300px}}
+#prog{position:fixed;left:0;top:env(safe-area-inset-top,0px);height:3px;width:100%;background:var(--o);transform:scaleX(0);transform-origin:left;z-index:40;pointer-events:none}
+.nav nav a.act{color:var(--g);box-shadow:0 2px 0 var(--o)}
+.sim{transform:translateY(var(--py,0px))}
+.hero>div:first-child{transform:translateY(var(--ty,0px))}
+section::before{content:"";position:absolute;top:-1px;left:0;right:0;height:2px;background:var(--g);transform:scaleX(0);transform-origin:left;transition:transform 1.3s cubic-bezier(.6,0,.2,1)}
+section.in::before{transform:scaleX(1)}
+.w{display:inline-block;overflow:hidden;vertical-align:top;padding:.18em 0 .12em;margin:-.18em 0 -.12em}
+.w>i{display:block;font-style:normal;transform:translateY(125%);transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.in>.w>i{transform:none}
+.js .hero .lead,.js .hero .cta{opacity:0;transform:translateY(16px);transition:opacity .7s .8s,transform .7s .8s}
+.js .hero.in .lead,.js .hero.in .cta{opacity:1;transform:none}
+.js .cell{clip-path:inset(0 100% 0 0);transition:clip-path .9s cubic-bezier(.6,0,.2,1) calc(var(--i,0)*90ms)}
+.js .cell.in{clip-path:inset(0)}
+.js .cell>*{opacity:0;transition:opacity .6s calc(var(--i,0)*90ms + .4s)}
+.js .cell.in>*{opacity:1}
+.js .sect g circle{transform:translateY(-46px);opacity:0}
+.js .cell.in .sect g circle{transform:none;opacity:1;transition:transform .8s cubic-bezier(.3,1.6,.5,1) calc(.9s + var(--k,0)*.12s),opacity .3s calc(.9s + var(--k,0)*.12s)}
+.js .step>:not(.ln){opacity:.25;transition:opacity .5s}
+.js .step.on>:not(.ln){opacity:1}
+.js .post{opacity:0;transform:translateY(60px) rotate(var(--r,2deg));transform-origin:50% 100%;transition:opacity .7s calc(var(--i,0)*130ms),transform 1s cubic-bezier(.2,.8,.2,1) calc(var(--i,0)*130ms)}
+.js .post.in{opacity:1;transform:none}
+.js form{opacity:0;transform:translateY(30px);transition:opacity .7s,transform .8s cubic-bezier(.2,.8,.2,1)}
+.js form.in{opacity:1;transform:none}
+.cell::before{-webkit-mask-image:radial-gradient(circle 130px at var(--mx,50%) var(--my,50%),#000 20%,transparent);mask-image:radial-gradient(circle 130px at var(--mx,50%) var(--my,50%),#000 20%,transparent)}
+.cell:hover::before{opacity:.9}
+.calc{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--ln);background:var(--card)}
+.calc>div{padding:28px;display:grid;gap:16px;align-content:start}
+.calc>div+div{border-left:1px solid var(--ln)}
+.calc label{display:grid;gap:10px}
+.calc input[type=range]{width:100%;accent-color:var(--o)}
+.seg{display:flex;border:1px solid var(--ln)}
+.seg button{flex:1;padding:11px 8px;background:none;border:0;font:500 14px "Space Grotesk",sans-serif;color:var(--ink);cursor:pointer;transition:background .2s,color .2s}
+.seg button+button{border-left:1px solid var(--ln)}
+.seg button[aria-pressed=true]{background:var(--g);color:var(--on-g)}
+.big{font-size:clamp(38px,5vw,58px);font-weight:500;color:var(--g);line-height:1;letter-spacing:-.03em}
+.bts{display:flex;gap:8px;align-items:flex-end;flex-wrap:wrap;min-height:68px}
+.bt{width:30px;height:64px;border:1px solid var(--g);display:flex;align-items:flex-end;border-radius:3px 3px 2px 2px}
+.bt i{display:block;width:100%;height:calc(var(--f)*100%);background:var(--g);opacity:.85}
+.stick{display:none}
+@media (max-width:900px){.calc{grid-template-columns:1fr}.calc>div+div{border-left:0;border-top:1px solid var(--ln)}.stick{display:block;position:fixed;left:16px;right:16px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:25;text-align:center;transform:translateY(160%);transition:transform .4s}.stick.show{transform:none}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}.sim,.hero>div:first-child{transform:none!important}}
+</style>
+</head>
+<body>
+<div id="prog"></div><header><div class="wrap nav">
+<a href="#top" aria-label="GRIPMAX DIY">
+<svg class="logo" viewBox="0 0 210 64" role="img" aria-label="GRIPMAX DIY" fill="currentColor">
+<text x="105" y="34" text-anchor="middle" font-family="Space Grotesk,Arial,sans-serif" font-weight="700" font-size="36" letter-spacing="3" textLength="206" lengthAdjust="spacingAndGlyphs">GRIPMAX</text>
+<rect x="0" y="52" width="62" height="2"/><rect x="148" y="52" width="62" height="2"/>
+<text x="105" y="58" text-anchor="middle" font-family="Space Grotesk,Arial,sans-serif" font-weight="500" font-size="14" letter-spacing="4">DIY</text>
+</svg></a>
+<nav><a href="#co-che">Cơ chế hoạt động</a><a href="#thu-nghiem">Thử nghiệm độ rít</a><a href="#diy">Hướng dẫn DIY</a><a href="#dat-hang">Đặt hàng</a></nav>
+<span style="display:flex;gap:8px"><button id="th" class="btn ghost sm" type="button" aria-label="Đổi giao diện sáng hoặc tối">Tối</button><a class="btn sm" href="#dat-hang">Nhận mẫu thử</a></span>
+</div></header>
+
+<main id="top">
+<div class="wrap hero">
+<div>
+<p class="mono" style="font-size:13px;color:var(--mute);margin:0 0 18px">Safe Step – dung dịch phủ nhám cho sàn gạch</p>
+<h1>Biến mặt sàn trơn bóng thành điểm tựa vững chắc trong 30 phút.</h1>
+<p class="lead">Một lớp keo polymer trong suốt mang theo hạt vi cầu silicon. Lăn lên gạch men, đá hoa cương hay bậc cầu thang, nó để lại bề mặt nhám vi mô: chân bám được khi ướt, còn màu và vân gạch vẫn nhìn thấy như cũ.</p>
+<div class="cta"><a class="btn" href="#dat-hang">Đặt bộ kit DIY</a><a class="btn ghost" href="#thu-nghiem">Xem cách hoạt động</a></div>
+</div>
+<div class="sim" id="thu-nghiem">
+<canvas id="sim" aria-label="Mô phỏng khối trượt trên sàn gạch ướt và sàn phủ Safe Step"></canvas>
+<div class="bar mono"><span>Vùng đang đứng: <b id="zone">–</b></span><span>COF <b id="cof">0.22</b></span><span class="state" id="st">–</span></div>
+<div class="ctl mono"><label for="div" style="display:block">Ranh giới</label><input id="div" type="range" min="25" max="75" value="50"></div>
+</div>
+</div>
+
+<section id="co-che"><div class="wrap">
+<div class="sh"><h2>Bên trong một lớp phủ mỏng hơn tờ giấy.</h2><p>Keo giữ hạt, hạt giữ chân. Mỗi thành phần làm đúng một việc, nên lớp phủ mỏng mà vẫn chịu được người đi lại hằng ngày.</p></div>
+<div class="bento">
+<div class="cell w4"><div class="k mono">Hạt vi cầu silicon</div><div class="v mono">40–80<small>µm</small></div><p>Đủ nhỏ để không làm xước da chân, đủ lớn để nhô lên khỏi màng nước mỏng trên mặt gạch.</p>
+<svg class="sect" viewBox="0 0 300 70" aria-hidden="true"><rect x="0" y="52" width="300" height="12" fill="none" stroke="currentColor" opacity=".35"/><path d="M0 46h300" stroke="var(--g)" stroke-width="3" opacity=".5"/><g fill="var(--g)"><circle cx="30" cy="40" r="7"/><circle cx="82" cy="42" r="5"/><circle cx="130" cy="38" r="8"/><circle cx="188" cy="41" r="6"/><circle cx="240" cy="39" r="7"/><circle cx="283" cy="43" r="4"/></g><path d="M0 14h300M0 10v8M300 10v8" stroke="var(--o)" opacity=".8"/><text x="150" y="9" text-anchor="middle" font-size="9" fill="var(--o)" font-family="JetBrains Mono,monospace">lớp phủ ≈ 0,1 mm</text></svg></div>
+<div class="cell"><div class="k mono">Hệ số ma sát (ướt)</div><div class="v mono"><span class="cnt" data-to="0.78" data-d="2">0.78</span><small>COF</small></div><p>Gạch trần ở mức 0.22. Số đo thử nội bộ trên gạch men 60×60 có nước.</p></div>
+<div class="cell"><div class="k mono">Lớp keo polymer</div><div class="v mono">Kháng nước</div><p>Màng keo gốc nước, bám lên men gạch sau khi làm sạch dầu và xà phòng. Không ngả vàng, không đục màu sàn.</p></div>
+<div class="cell"><div class="k mono">Khô bề mặt / đóng rắn</div><div class="v mono"><span class="cnt" data-to="30" data-d="0">30</span>′<small>/ 24 giờ</small></div><p>Đi nhẹ được sau khoảng 30 phút. Chờ đủ 24 giờ rồi hãy lau ướt hoặc dội nước.</p></div>
+<div class="cell w3"><div class="k mono">Độ bền mài mòn</div><div class="v mono">2–3<small>năm / sàn nhà tắm</small></div><p>Ước tính theo mức dùng gia đình. Bậc thang và lối đi hay kéo lê đồ nặng sẽ mòn nhanh hơn, cần phủ lại theo vệt.</p></div>
+</div>
+<p class="note mono">Các chỉ số là kết quả thử nghiệm nội bộ của bản mẫu, chưa phải chứng nhận của đơn vị thứ ba.</p>
+</div></section>
+
+<section id="diy"><div class="wrap">
+<div class="sh"><h2>Ba bước, một buổi sáng cuối tuần.</h2><p>Không cần thợ. Chuẩn bị chổi cọ, cây lăn mút và một khu vực khô ráo để chờ.</p></div>
+<div class="steps">
+<div class="step rv"><div class="ln"></div><div class="n mono">01</div><h3>Làm sạch</h3><p>Cọ bằng dung dịch tẩy dầu, xả sạch, lau khô. Xà phòng và cặn nước cứng còn sót là lý do chính khiến lớp phủ bong.</p><span class="t mono">≈ 10 phút</span></div>
+<div class="step rv"><div class="ln"></div><div class="n mono">02</div><h3>Lăn phủ hỗn hợp</h3><p>Lắc đều chai để hạt không lắng, đổ ra khay và lăn thành một lớp mỏng, đều tay. Một lượt là đủ, không lăn đè hai lần.</p><span class="t mono">≈ 8–10 m² / bộ</span></div>
+<div class="step rv"><div class="ln"></div><div class="n mono">03</div><h3>Chờ đóng rắn</h3><p>Đóng cửa phòng, bật quạt thông gió. Khoảng 30 phút là đi được nhẹ, 24 giờ sau mới dùng nước thoải mái.</p><span class="t mono">30′ → 24 giờ</span></div>
+</div></div></section>
+
+<section id="dinh-muc"><div class="wrap">
+<div class="sh"><h2>Sàn nhà bạn cần bao nhiêu?</h2><p>Kéo thanh diện tích để ra lượng dung dịch cho một lớp. Sàn rất xốp hoặc đã phủ từ trước sẽ hút nhiều hơn.</p></div>
+<div class="calc"><div>
+<label>Diện tích cần phủ <output id="aout" class="mono" style="color:var(--ink)">6 m²</output><input id="area" type="range" min="1" max="60" value="6"></label>
+<div class="seg" role="group" aria-label="Phạm vi phủ"><button type="button" aria-pressed="true" data-m="0">Phủ toàn sàn</button><button type="button" aria-pressed="false" data-m="1">Chỉ lối đi (≈ 40%)</button></div>
+<p class="note mono">Định mức tham khảo ≈ 9 m² cho 1 lít, một lớp.</p></div>
+<div><div class="k mono" style="font-size:12px;color:var(--mute)">Lượng dung dịch cần</div>
+<div class="big mono"><span id="lout">0,7</span> lít</div><div class="bts" id="bts"></div>
+<p id="kout" class="mono" style="font-size:13px;color:var(--mute);margin:0 0 18px"></p><a class="btn" id="ccta" href="#dat-hang">Đặt đúng lượng này</a></div></div>
+</div></section>
+<section id="cong-dong"><div class="wrap">
+<div class="sh"><h2>Thử trên những chỗ người ta hay ngã.</h2><p>Ba ghi chép từ các lần thử: nhà tắm, bậc tam cấp, phòng người lớn tuổi.</p></div>
+<div class="posts">
+<article class="post"><div class="who"><span class="av">HN</span><div><b>Hoàng Nam</b><div class="meta mono">Nhà tắm tầng 2 · sau 3 tuần</div></div></div><p>Phủ sàn nhà tắm gạch 30×30. Bé nhà mình hay chạy nhảy sau khi tắm, giờ chân vẫn bám khi còn nước. Gạch nhìn gần như không đổi màu.</p><div class="cm"><b>Cô Lan:</b> Chân trần cảm giác hơi sần, vài ngày là quen.</div><button class="like" aria-pressed="false" data-n="12">Hữu ích · 12</button></article>
+<article class="post"><div class="who"><span class="av">TV</span><div><b>Thanh Vy</b><div class="meta mono">Bậc tam cấp trước nhà · mùa mưa</div></div></div><p>Bậc đá hoa cương trước cửa hay đọng nước mưa. Mình phủ riêng mép bậc và dọc theo lối bước. Mưa lớn vẫn đi được mà không phải bám tay vịn.</p><div class="cm"><b>Anh Khoa:</b> Mép bậc có bị mòn nhanh không? <b>Vy:</b> Có, mép mòn trước, mình phủ lại sau tháng thứ hai.</div><button class="like" aria-pressed="false" data-n="27">Hữu ích · 27</button></article>
+<article class="post"><div class="who"><span class="av">MT</span><div><b>Mẹ của Tuấn</b><div class="meta mono">Phòng ngoại 78 tuổi · gạch bóng</div></div></div><p>Gạch bóng phòng bà hay đánh bóng thêm mỗi lần lau. Phủ xong bà đi dép trong nhà vẫn vững, không còn kiểu bước dè dặt từng bước.</p><div class="cm"><b>Chú Hải:</b> Lau bằng giẻ ẩm thường được không? <b>Mẹ Tuấn:</b> Được, tránh chà bằng bàn chải cứng.</div><button class="like" aria-pressed="false" data-n="19">Hữu ích · 19</button></article>
+</div>
+<div class="split">
+<div id="hoi-dap"><h3 style="font-size:28px;margin-bottom:14px">Hỏi nhanh</h3>
+<details><summary>Có làm gạch bị mờ hoặc đổi màu không?</summary><p>Lớp keo gần như trong suốt, nên màu và vân gạch vẫn thấy rõ. Với gạch bóng gương bạn sẽ thấy mặt hơi mờ nhẹ, đó là phần đổi lấy độ bám. Nên thử một góc nhỏ trước.</p></details>
+<details><summary>Gỡ lớp phủ ra bằng cách nào?</summary><p>Ngâm dung dịch tẩy gốc kiềm nhẹ, chà bằng bàn chải mềm rồi xả sạch. Gạch men không bị hư, vì lớp phủ chỉ bám trên men.</p></details>
+<details><summary>Có dùng được ngoài trời không?</summary><p>Dùng được cho bậc, sân có mái che. Sàn chịu nắng gắt cả ngày sẽ lão hóa nhanh hơn, cần phủ lại thường xuyên hơn.</p></details>
+<details><summary>Sàn gỗ hoặc sàn xi măng thô thì sao?</summary><p>Bản này làm cho gạch men và đá mài nhẵn. Sàn xốp hút nước cần loại lót riêng, hiện chưa có.</p></details>
+</div>
+<form id="dat-hang" aria-label="Đăng ký mẫu thử"><h3 style="font-size:28px">Nhận mẫu thử hoặc đặt kit</h3>
+<label>Họ và tên<input name="n" required autocomplete="name"></label>
+<label>Số điện thoại<input name="p" type="tel" required autocomplete="tel" inputmode="tel"></label>
+<label>Bạn cần gì<select name="t"><option>Mẫu thử 50 ml (thử 1 góc sàn)</option><option>Bộ kit DIY 1 lít (8–10 m²)</option><option>Tư vấn cho bậc thang / nhà có người lớn tuổi</option></select></label>
+<button class="btn" type="submit">Gửi đăng ký</button>
+<div class="ok" id="ok" role="status"></div>
+</form>
+</div>
+</div></section>
+</main>
+<a class="btn stick" href="#dat-hang">Nhận mẫu thử Safe Step</a>
+<footer><div class="wrap"><span>© 2026 GRIPMAX DIY · Safe Step</span><span>Nội dung ghi chép và số liệu trên trang là bản mẫu để trình bày dự án.</span></div></footer>
+
+<script>
+(function(){
+var cv=document.getElementById('sim'),cx=cv.getContext('2d'),W,H,dpr,bare,safe;
+var dv=document.getElementById('div'),zoneEl=document.getElementById('zone'),cofEl=document.getElementById('cof'),stEl=document.getElementById('st');
+function mb(a){return function(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+function layer(grit){
+var c=document.createElement('canvas');c.width=W*dpr;c.height=H*dpr;var g=c.getContext('2d');g.scale(dpr,dpr);
+g.fillStyle='#E4E3DC';g.fillRect(0,0,W,H);
+g.strokeStyle='#B9B6AB';g.lineWidth=2;
+for(var x=0;x<=W;x+=110){g.beginPath();g.moveTo(x,0);g.lineTo(x,H);g.stroke()}
+for(var y=0;y<=H;y+=110){g.beginPath();g.moveTo(0,y);g.lineTo(W,y);g.stroke()}
+var gr=g.createLinearGradient(0,0,W,H);gr.addColorStop(0,'rgba(255,255,255,0)');gr.addColorStop(.35,'rgba(255,255,255,'+(grit?.12:.6)+')');gr.addColorStop(.5,'rgba(255,255,255,0)');gr.addColorStop(.8,'rgba(255,255,255,'+(grit?.08:.4)+')');gr.addColorStop(1,'rgba(255,255,255,0)');
+g.fillStyle=gr;g.fillRect(0,0,W,H);
+var r=mb(7);
+for(var i=0;i<14;i++){var px=r()*W,py=r()*H,pr=6+r()*14;var rg=g.createRadialGradient(px-pr*.3,py-pr*.3,1,px,py,pr);rg.addColorStop(0,'rgba(255,255,255,.8)');rg.addColorStop(1,'rgba(120,150,160,.18)');g.fillStyle=rg;g.beginPath();g.arc(px,py,pr,0,7);g.fill()}
+if(grit){var q=mb(21),n=Math.round(W*H/150);
+for(var j=0;j<n;j++){var gx=q()*W,gy=q()*H,s=.7+q()*1.5;
+g.fillStyle='rgba(35,61,41,.38)';g.beginPath();g.arc(gx,gy,s,0,7);g.fill();
+g.fillStyle='rgba(255,255,255,.85)';g.beginPath();g.arc(gx-s*.3,gy-s*.3,s*.4,0,7);g.fill()}}
+return c}
+function size(){dpr=Math.min(window.devicePixelRatio||1,2);W=cv.clientWidth;H=cv.clientHeight;cv.width=W*dpr;cv.height=H*dpr;cx.setTransform(dpr,0,0,dpr,0,0);bare=layer(0);safe=layer(1)}
+var px=0,pv=0,tx=0,mouse=false,cof=.22,t0=0,init=false,trail=[];
+cv.addEventListener('pointermove',function(e){mouse=true;var b=cv.getBoundingClientRect();tx=e.clientX-b.left});
+cv.addEventListener('pointerleave',function(){mouse=false});
+function frame(t){
+if(!W){requestAnimationFrame(frame);return}
+if(!init){px=W*.2;tx=px;init=true}
+var d=dv.value/100*W;
+if(!mouse)tx=W*(.5+.38*Math.sin(t/1400));
+var onSafe=px>d;
+if(!onSafe){pv+=(tx-px)*.012;pv*=.975;px+=pv}else{pv*=.4;var ox=px;px+=(tx-px)*.06;pv=px-ox}
+if(px<30){px=30;pv*=-.5}if(px>W-30){px=W-30;pv*=-.5}
+cof+=((onSafe?.78:.22)-cof)*.12;
+cx.drawImage(bare,0,0,W,H);
+cx.save();cx.beginPath();cx.rect(d,0,W-d,H);cx.clip();cx.drawImage(safe,0,0,W,H);cx.restore();
+cx.fillStyle='#D95D39';cx.fillRect(d-1,0,2,H);
+cx.font='500 11px JetBrains Mono,monospace';cx.fillStyle='#233D29';
+cx.fillText('Gạch ướt nguyên bản',12,22);cx.textAlign='right';cx.fillText('Phủ Safe Step',W-12,22);cx.textAlign='left';
+var sp=Math.abs(pv),y=H*.55,w=58,h=36;
+if(!onSafe&&sp>1.5)trail.push({x:px,t:t});
+while(trail.length&&t-trail[0].t>900)trail.shift();
+trail.forEach(function(p){cx.fillStyle='rgba(70,110,130,'+(.28*(1-(t-p.t)/900))+')';cx.fillRect(p.x-1.5,y-h/2+3,3,h-6)});
+var jit=onSafe?Math.min(Math.abs(tx-px)/40,1)*1.8:0,jx=(Math.random()-.5)*jit,jy=(Math.random()-.5)*jit;
+if(sp>1.5){for(var k=1;k<5;k++){cx.fillStyle='rgba(35,61,41,'+(.12/k)+')';cx.fillRect(px-w/2-pv*k*2.2,y-h/2,w,h)}}
+cx.save();cx.shadowColor='rgba(0,0,0,.3)';cx.shadowBlur=onSafe?4:14;cx.shadowOffsetY=onSafe?2:6;
+cx.fillStyle='#233D29';cx.fillRect(px+jx-w/2,y+jy-h/2,w,h);cx.restore();
+cx.fillStyle='#F6F5F0';cx.font='500 10px JetBrains Mono,monospace';cx.textAlign='center';cx.fillText('GÓT',px,y+3);cx.textAlign='left';
+zoneEl.textContent=onSafe?'Phủ Safe Step':'Gạch nguyên bản';
+cofEl.textContent=cof.toFixed(2);
+stEl.textContent=onSafe?'Bám':'Trượt';stEl.className='state '+(onSafe?'grip':'slip');
+requestAnimationFrame(frame)}
+size();requestAnimationFrame(frame);
+var rz;window.addEventListener('resize',function(){clearTimeout(rz);rz=setTimeout(function(){init=false;size()},120)});
+/* reveal */
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.35});
+document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+/* scroll choreography */
+var rm=matchMedia('(prefers-reduced-motion:reduce)').matches,root=document.documentElement;
+function wrap(el){var ws=el.textContent.trim().split(/\s+/);el.textContent='';ws.forEach(function(w,i){var s=document.createElement('span');s.className='w';var n=document.createElement('i');n.textContent=w;n.style.transitionDelay=(i*55)+'ms';s.appendChild(n);el.appendChild(s);el.appendChild(document.createTextNode(' '))})}
+var h1=document.querySelector('h1'),hero=document.querySelector('.hero');
+wrap(h1);document.querySelectorAll('h2').forEach(wrap);
+setTimeout(function(){h1.classList.add('in');hero.classList.add('in')},150);
+var cells=[].slice.call(document.querySelectorAll('.cell')),posts=[].slice.call(document.querySelectorAll('.post'));
+cells.forEach(function(c,i){c.style.setProperty('--i',i)});
+posts.forEach(function(p,i){p.style.setProperty('--i',i);p.style.setProperty('--r',['-2.5deg','2deg','-1.5deg'][i%3])});
+document.querySelectorAll('.sect g circle').forEach(function(c,i){c.style.setProperty('--k',i)});
+function count(el){var to=+el.dataset.to,d=+el.dataset.d,t0=performance.now();(function f(t){var k=Math.min((t-t0)/1300,1),e=1-Math.pow(1-k,3);el.textContent=(to*e).toFixed(d);if(k<1)requestAnimationFrame(f)})(t0)}
+var io2=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;var el=e.target;el.classList.add('in');io2.unobserve(el);if(!rm&&el.classList.contains('cell'))el.querySelectorAll('.cnt').forEach(function(c){setTimeout(function(){count(c)},500)})})},{threshold:0,rootMargin:'0px 0px -12% 0px'});
+document.querySelectorAll('h2,section,.cell,.post,form').forEach(function(el){io2.observe(el)});
+var steps=document.querySelector('.steps'),sl=[].slice.call(document.querySelectorAll('.step')),prog=document.getElementById('prog'),sim=document.querySelector('.sim'),hl=document.querySelector('.hero>div'),secs=[].slice.call(document.querySelectorAll('section[id]')),links=[].slice.call(document.querySelectorAll('.nav nav a')),map={'cong-dong':'dat-hang','dinh-muc':'dat-hang'},tk=0;
+function cl(v){return Math.min(Math.max(v,0),1)}
+function upd(){tk=0;var y=scrollY,vh=innerHeight,max=root.scrollHeight-vh;
+prog.style.transform='scaleX('+(max>0?y/max:0)+')';
+if(!rm&&y<vh*1.3){sim.style.setProperty('--py',(-y*.07)+'px');hl.style.setProperty('--ty',(y*.05)+'px')}
+var r=steps.getBoundingClientRect();
+sl.forEach(function(s,i){var v;if(innerWidth>900){v=cl(cl((vh*.8-r.top)/(vh*.45))*3-i)}else{v=cl((vh*.8-s.getBoundingClientRect().top)/(vh*.3))}s.style.setProperty('--s',v);s.classList.toggle('on',v>.12)});
+var cur='';secs.forEach(function(s){if(s.getBoundingClientRect().top<vh*.45)cur=s.id});
+links.forEach(function(a){a.classList.toggle('act',a.getAttribute('href')==='#'+(map[cur]||cur))});
+var fr=document.getElementById('dat-hang').getBoundingClientRect();
+document.querySelector('.stick').classList.toggle('show',y>vh*.9&&!(fr.top<vh&&fr.bottom>0))}
+addEventListener('scroll',function(){if(!tk){tk=1;requestAnimationFrame(upd)}},{passive:true});addEventListener('resize',upd);upd();
+/* spotlight vân nhám */
+cells.forEach(function(c){c.addEventListener('pointermove',function(e){var b=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-b.left)+'px');c.style.setProperty('--my',(e.clientY-b.top)+'px')})});
+/* sáng/tối */
+var th=document.getElementById('th');
+function curTheme(){return root.dataset.theme||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light')}
+function lab(){th.textContent=curTheme()==='dark'?'Sáng':'Tối'}
+th.addEventListener('click',function(){root.dataset.theme=curTheme()==='dark'?'light':'dark';lab()});lab();
+/* định mức */
+var A=document.getElementById('area'),mode=0;
+function calc(){var a=+A.value,L=(mode?a*.4:a)/9,kits=Math.max(1,Math.ceil(L-.001)),ml=Math.round(L*100)*10,b='';
+document.getElementById('aout').textContent=a+' m²';
+document.getElementById('lout').textContent=L.toFixed(1).replace('.',',');
+for(var i=0;i<kits;i++)b+='<span class="bt" style="--f:'+Math.min(1,Math.max(0,L-i))+'"><i></i></span>';
+document.getElementById('bts').innerHTML=b;
+document.getElementById('kout').textContent=ml<=50?'≈ '+ml+' ml: mẫu thử 50 ml là đủ.':'≈ '+ml+' ml, tức '+kits+' bộ kit 1 lít.'}
+A.addEventListener('input',calc);
+document.querySelectorAll('.seg button').forEach(function(b){b.addEventListener('click',function(){mode=+b.dataset.m;document.querySelectorAll('.seg button').forEach(function(x){x.setAttribute('aria-pressed',x===b)});calc()})});
+document.getElementById('ccta').addEventListener('click',function(){document.querySelector('select[name=t]').selectedIndex=1});
+calc();
+/* likes */
+document.querySelectorAll('.like').forEach(function(b){b.addEventListener('click',function(){var n=+b.dataset.n,on=b.getAttribute('aria-pressed')==='true';b.setAttribute('aria-pressed',!on);b.textContent='Hữu ích · '+(on?n:n+1)})});
+/* form */
+document.querySelector('form').addEventListener('submit',function(e){e.preventDefault();var f=e.target,o=document.getElementById('ok');o.style.display='block';o.textContent='Đã nhận đăng ký của '+f.n.value+'. Bên mình sẽ gọi số '+f.p.value+' trong vòng 24 giờ.';f.reset()});
+})();
+</script>
+</body>
+</html>
